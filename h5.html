@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简单编程</title>
+</head>
+<body>
+<br>
+    网站名称:<span id="jname"></span></br>
+    网站URL:<span id="jurl"></span></br>
+    网站slogan:<span id="jslogan"></span></br>
+    test：<span id="demo"></span></br>
+    网站其他域名：<span id="demo1"></span></br>
+    网站其他域名1：<span id="demo2"></span></br>
+    网站其他域名2：<span id="demo3"></span></br>
+    转换javaascript:<span id="id"></span></br>
+    server:<span id="server"></span></br>
+    server:<span id="server1"></span></br>
+</p>
+<script>
+    var json_obj={
+        "name":"简单编程",
+        "url":"www.twle.cn",
+        "slogan":"简单教程，简单编程！"
+    };
+    document.getElementById('jname').innerHTML=json_obj.name;
+    document.getElementById('jurl').innerHTML=json_obj.url;
+    document.getElementById('jslogan').innerHTML=json_obj.slogan;
+</script>
+<script>
+    var myObj = { "name":"twle", "alexa":null, "site":"http://www.twle.cn" };
+for (x in myObj) {
+document.getElementById("demo").innerHTML += myObj[x] + "<br>";
+}
+</script>
+<script>
+    myObj = {
+        "name":"twle",
+        "alexa":100000,
+        "sites": {
+            "site1":"www.twle.cn",
+            "site2":"twle.cn",
+            "site3":"c.twle.cn"
+        }
+    }
+    myObj.sites.site3="www.google.com";
+    delete myObj.sites.site2;
+    document.getElementById("demo1").innerHTML=myObj.sites.site1;
+    document.getElementById("demo2").innerHTML=myObj.sites.site2;
+    document.getElementById("demo3").innerHTML=myObj.sites.site3;
+</script>
+<script>
+    var myjson=JSON.parse('{"name":"twle", "alexa":null, "site":"http://www.twle.cn"}');
+    document.getElementById('id').innerHTML=myjson.name+":"+myjson.alexa+":"+myjson.site;
+</script>
+<script>
+    var obj = [ "腾讯", "百度", "简单教程","阿里巴巴" ];
+    var json_str = JSON.stringify(obj);
+
+    document.getElementById("server").innerHTML = json_str;
+</script>
+<script>
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            myArr = JSON.parse(this.responseText);
+            document.getElementById("server1").innerHTML = myArr[1];
+        }
+    };
+    xmlhttp.open("GET", "www.twle.cn/r/show/yufei/json/json_demo_array", true);
+    xmlhttp.send();
+</script>
+
+</body>
+</html>
